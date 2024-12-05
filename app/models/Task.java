@@ -1,9 +1,13 @@
 package models;
 
+import java.sql.Date;
+
 public class Task {
-    private long id;
+    private final long id;
     private String name;
     private String description;
+    public String status;
+    public Date createdAt;
 
     // Constructor
     public Task(long id, String name, String description) {

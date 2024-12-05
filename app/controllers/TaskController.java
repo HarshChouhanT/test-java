@@ -11,10 +11,17 @@ import play.mvc.Result;
 import java.util.List;
 import java.util.ArrayList;
 
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import akka.actor.ActorSystem;
+//import akka.stream.javadsl.Flow;
+import play.mvc.Controller;
+import play.mvc.WebSocket;
+
 public class TaskController extends Controller {
 
     // In-memory task storage
-    private static List<Task> tasks = new ArrayList<>();
+    private static final List<Task> tasks = new ArrayList<>();
     private static long idCounter = 1;
 
     // Get all tasks
@@ -64,4 +71,18 @@ public class TaskController extends Controller {
         tasks.remove(task);
         return noContent();
     }
+
+//    // WebSocket handler
+//    public WebSocket socket() {
+//        return WebSocket.Text.accept(request -> {
+//            // Create a WebSocket flow
+//            return Flow.fromSinkAndSource(
+//                    akka.stream.javadsl.Sink.ignore(),  // Sink to handle incoming messages
+//                    akka.stream.javadsl.Source.tick(
+//                            java.time.Duration.ZERO,
+//                            java.time.Duration.ofSeconds(1),
+//                            "Task Update: " + java.time.Instant.now())  // Source for outgoing messages
+//            );
+//        });
+//    }
 }

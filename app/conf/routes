@@ -3,3 +3,4 @@ GET     /tasks/:id              controllers.TaskController.getTask(id: Long)
 POST    /tasks                  controllers.TaskController.createTask(request: Http.Request)
 PUT     /tasks/:id              controllers.TaskController.updateTask(request: Http.Request, id: Long)
 DELETE  /tasks/:id              controllers.TaskController.deleteTask(id: Long)
+GET     /tasks/socket           controllers.TaskController.socket
